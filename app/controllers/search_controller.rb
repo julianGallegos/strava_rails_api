@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
 
+
 def search_params
 
 end
@@ -22,18 +23,29 @@ def index
 
 	headers = {"Content-type"=> "application/json", "Authorization"=> "Bearer d2e2f6ce8fbf2f0ade6adf4347ea791c0cf8bfcf"}
 
-	p @coordinates = HTTParty.get("https://www.strava.com/api/v3/activities/257526140/streams/latlng", :headers => headers)
-
-	debug
+	@stream = HTTParty.get("https://www.strava.com/api/v3/activities/257526140/streams/latlng", :headers => headers)
 
 
+	@coordinates = @stream.parsed_response[0]['data']
+
+	@filtered_coordinates = every_tenth_coordinate(@coordinates)
 
 
-	# @last_run = HTTParty.get('https://www.strava.com/api/v3/activities/57526140/streams/latlng')
 
-
-	
+	debug	
 
 end
 
+	private
+	def every_tenth_coordinate(coorindate_input)
+		filtered = []
+		coorindate_input.each_with_index do |coord, index|
+			if index % 100 == 0	
+			filtered << coord
+			end
+		end
+		return filtered
+	end
+
+	
 end

@@ -31,8 +31,12 @@ def index
 	@filtered_coordinates = every_tenth_coordinate(@coordinates)
 
 
+	#i can't think of an easier way to make it easy for a user to look up previous runs other than displaying them all on the screen
 
-	debug	
+	#then the user can click on the run depending on the date / title of the input run; ljll
+
+	#when you click on the activity, it should get the coordinates and then enter those coordinates into instragram
+
 
 end
 

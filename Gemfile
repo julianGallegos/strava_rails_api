@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'strava-api-v3'
 gem 'omniauth-strava-oauth2', '~> 0.0.2'
 
+gem 'omniauth-instagram'
+
 gem 'omniauth'
 
 # Use jquery as the JavaScript library

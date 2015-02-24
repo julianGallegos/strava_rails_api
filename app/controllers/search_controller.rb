@@ -7,7 +7,7 @@ end
 
 def index
 
-	token = session[:access_token]
+	token = session[:strava_access_token]
 
 	user_id = session[:uid]
 
@@ -37,6 +37,7 @@ def index
 
 	#when you click on the activity, it should get the coordinates and then enter those coordinates into instragram
 
+	debug
 
 end
 

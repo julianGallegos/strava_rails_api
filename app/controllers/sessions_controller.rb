@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 	
 def create
 
+    if request.env["omniauth.auth"].provider == "strava"
     auth_strava = request.env["omniauth.auth"]
 
     strava_access_token = auth_strava.credentials.token
@@ -18,16 +19,38 @@ def create
  
     puts "The strava access token is #{:strava_access_token}"
 
+    render "pages/instagram_sign_in"
 
-    debug
+    else request.env["omniauth.auth"].provider == "instagram"
+
+    set_instagram_token
+
+    end
+
+    # if request.env["omniauth.auth"].provider == nil
+    # #after all that's done redirect to instagram path
+
+    # render "pages/instagram_sign_in"
+    # #else if the path is instagram...redirect to instagram sign in page
+
+    # else request.env["omniauth.auth"].provider == "instagram"
+    # #first sign in with strava
+    # set_instagram_token
+
+    # end
+    #create a 2nd login view for instagram login
+
+    #if instagram session = session, take them to app search page
+
+    #else instagram session = nil then take them to instragram login
+
+    # put in instagram pages controller
 
 end
 
 
 
-def instagram_token
-
-
+def set_instagram_token
 
     auth_instagram = request.env["omniauth.auth"]
 
@@ -43,7 +66,7 @@ def instagram_token
 
     puts "The access token is #{access_token}"
 
-    debug
+    redirect_to search_path
 
 end
 

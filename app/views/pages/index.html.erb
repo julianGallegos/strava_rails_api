@@ -1,9 +1,1 @@
  <%= link_to "Sign in with Strava", "/auth/strava?client_id=redirect_uri=http://localhost:3000/strava/callback" %>
-
- <% if session[:token] %>
-  Welcome <%= session[:name] %>!<br>
-  Token = <%= session[:token] %><br>
-  <%= link_to "Sign Out", signout_path %>
-<% else %>
-  <%= link_to "Sign in with Instagram", "/auth/instagram" %>
-<% end %>

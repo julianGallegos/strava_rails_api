@@ -14,7 +14,7 @@ function View(){
 
 View.prototype.getRunId = function(){
 	var runIdClicked = event.target.id
-	console.log(runIdClicked)
+	return runIdClicked
 }
 
 
@@ -29,7 +29,17 @@ function Controller(view){
 // after the coordinates are returned, those will be entered into instgram to get the image objects
 Controller.prototype.searchForImages = function(){
 	console.log("controller search method")
-	this.view.getRunId()
+	
+	var runCoordinatesRequest = $.ajax({
+		url: "/run_coordinates",
+		type: "GET",
+		data: {run_id: this.view.getRunId()},
+		dataType: "json"
+	});
+
+	runCoordinatesRequest.done(function(event){
+		console.log(event)
+	})
 }
 
 

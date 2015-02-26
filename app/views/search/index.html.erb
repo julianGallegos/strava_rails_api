@@ -3,9 +3,8 @@
 <ul>
 
 <% @runs.each do |run| %>
-	<li>Run Name: <%=run["name"] %> </li>
-	<li>Date of Run: <%=run["start_date"]%> </li>
-	<li id="<%=run['id']%>">Run id: <a href='<%run["id"] %>'><%=run["id"] %></a></li>
+	<a><li id="<%=run['id']%>" class="runIds"> 
+		 Run Name: <%=run["name"]%><br>Date of Run: <%=run["start_date"]%></li></a>
 	<br>
 	<% end %>
 </ul>

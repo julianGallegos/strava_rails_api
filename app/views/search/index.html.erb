@@ -1,6 +1,13 @@
-<h1>index view</h1>
+<h1>Strava Activities</h1>
 
+<ul>
 
-
+<% @runs.each do |run| %>
+	<li>Run Name: <%=run["name"] %> </li>
+	<li>Date of Run: <%=run["start_date"]%> </li>
+	<li id="<%=run['id']%>">Run id: <a href='<%run["id"] %>'><%=run["id"] %></a></li>
+	<br>
+	<% end %>
+</ul>
 
 

@@ -65,6 +65,31 @@ def search_runs
 	#when you click on the activity, it should get the coordinates and then enter those coordinates into instragram
 end
 
+
+def request_instagram_pictures
+	lat = params[:lat]
+	lon = params[:lon]
+	
+	# lat = "33.80"
+	# lon = "117.919"
+
+	instagram_access_token = "3545545.dc02dfa.5f694c6d79be42b4b9dab875137f6cb3"
+	
+
+		url = "https://api.instagram.com/v1/media/search?lat=#{lat}&lng=#{lon}&access_token=#{instagram_access_token}"
+
+		response = HTTParty.get(url)
+
+	
+
+		puts response.body, response.code, response.message, response.headers.inspect
+
+		render json: response
+	
+
+
+end
+
 	private
 	def every_tenth_coordinate(coorindate_input)
 		filtered = []

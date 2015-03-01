@@ -38,7 +38,22 @@ Controller.prototype.searchForImages = function(){
 	});
 
 	runCoordinatesRequest.done(function(event){
-		console.log(event)
+		console.log(event[10])
+		//lat coords
+		console.log(event[10][0])
+		//lon coords
+		console.log(event[10][1])
+
+		var secondRequestToInstagram = $.ajax({
+			url: "/instagram",
+			type: "GET",
+			data: {lat: event[0][0], lon: event[0][1]},
+			dataType: "json"
+		});
+		secondRequestToInstagram.done(function(event){
+			console.log(event)
+		})
+
 	})
 }
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # get '/auth/:provider/callback', to: 'sessions#instagram_token'
   get '/search', to: "search#index"
   get '/run_coordinates', to: "search#search_runs"
+  get '/instagram', to: "search#request_instagram_pictures"
   post '/results', to: "search#results"
   # You can have the root of your site routed with "root"
   root 'pages#index'

@@ -38,21 +38,25 @@ Controller.prototype.searchForImages = function(){
 	});
 
 	runCoordinatesRequest.done(function(event){
-		console.log(event[10])
-		//lat coords
-		console.log(event[10][0])
-		//lon coords
-		console.log(event[10][1])
-
+		for (var i = 0; i < event.length; i ++){
+			console.log(event[i])
 		var secondRequestToInstagram = $.ajax({
 			url: "/instagram",
 			type: "GET",
-			data: {lat: event[0][0], lon: event[0][1]},
+			data: {lat: event[i][0], lon: event[i][1]},
 			dataType: "json"
 		});
-		secondRequestToInstagram.done(function(event){
-			console.log(event)
-		})
+		secondRequestToInstagram.done(function(msg){
+				console.log(msg)
+					
+			  	// $('.instagram_images').append('')
+			  	// $('.instagram_images').append('<img class="instagram_pics col-md-4" src=' + msg.data[i].images.standard_resolution.url + '>');
+					$('.instagram_images').each(function addImages(index, element){
+						$(element).append('<img class="instagram_pics col-md-4" src=' + msg.data[index].images.standard_resolution.url + '>')
+					})
+			})
+		}
+
 
 	})
 }
